@@ -8,7 +8,7 @@ form.addEventListener("submit", async (e) => {
   const item = input.value;
   
   // Send item to the server
-  const response = await fetch("http://localhost:3000/items", {
+  const response = await fetch("https://todo-list-5xhj.onrender.com/items", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ name: item }),
@@ -22,7 +22,7 @@ form.addEventListener("submit", async (e) => {
 
 // Fetch and display items
 async function loadItems() {
-  const response = await fetch("http://localhost:3000/items");
+  const response = await fetch("https://todo-list-5xhj.onrender.com/items");
   const items = await response.json();
   itemList.innerHTML = ""; // Clear list
   items.forEach((item) => {
@@ -34,7 +34,7 @@ async function loadItems() {
 
 // Delete an item
 async function deleteItem(id) {
-  await fetch(`http://localhost:3000/items/${id}`, { method: "DELETE" });
+  await fetch(`https://todo-list-5xhj.onrender.com/items/${id}`, { method: "DELETE" });
   loadItems(); // Refresh the list
 }
 
