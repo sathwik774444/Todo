@@ -7,7 +7,7 @@ const myschema = new Schema({
     name:{
         type :String,
         required : true,
-        maxlength : 50
+        maxlength : 200
     },
     createdAt:{
         type : Date,
