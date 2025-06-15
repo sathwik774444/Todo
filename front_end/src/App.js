@@ -4,10 +4,11 @@ import "./App.css";
 function App() {
   const [items, setItems] = useState([]);
   const [input, setInput] = useState("");
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   // Fetch items from backend
   const loadItems = async () => {
-    const response = await fetch("https://todo-list-5xhj.onrender.com/items");
+    const response = await fetch(`${apiUrl}/items`);
     const data = await response.json();
     setItems(data);
   };
@@ -20,7 +21,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!input.trim()) return;
-    await fetch("https://todo-list-5xhj.onrender.com/items", {
+    await fetch(`${apiUrl}/items`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name: input }),
@@ -31,7 +32,7 @@ function App() {
 
   // Delete item
   const deleteItem = async (id) => {
-    await fetch(`https://todo-list-5xhj.onrender.com/items/${id}`, {
+    await fetch(`${apiUrl}/items/${id}`, {
       method: "DELETE",
     });
     loadItems();
