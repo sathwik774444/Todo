@@ -11,16 +11,6 @@ app.use(cors());
 app.use(bodyParser.json());
 
 connectdb();
-// Connect to MongoDB
-// mongoose
-//   .connect("mongodb://localhost:27017/database")
-//   .then(() => console.log("Connected to MongoDB"))
-//   .catch((err) => console.error(err));
-
-// // Item schema and model
-// const itemSchema = new mongoose.Schema({ name: String });
-// const Item = mongoose.model("Item", itemSchema);
-
 
 
 // Routes
@@ -41,6 +31,6 @@ app.delete("/items/:id", async (req, res) => {
 });
 
 // Start server
-app.listen(process.env.port , () => {
-  console.log(`Server running on http://localhost:${process.env.port}`);
+app.listen(process.env.PORT , () => {
+  console.log(`Server running on http://localhost:${process.env.PORT}`);
 });
