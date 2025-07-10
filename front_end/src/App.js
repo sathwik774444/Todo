@@ -7,15 +7,15 @@ function App() {
   const apiUrl = process.env.REACT_APP_API_URL;
 
   // Fetch items from backend
-  const loadItems = async () => {
+  const loadItems = React.useCallback(async () => {
     const response = await fetch(`${apiUrl}/items`);
     const data = await response.json();
     setItems(data);
-  };
+  }, [apiUrl]);
 
   useEffect(() => {
     loadItems();
-  }, []);
+  }, [loadItems]);
 
   // Add item
   const handleSubmit = async (e) => {
